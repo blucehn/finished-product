@@ -7,9 +7,16 @@
 //
 
 #import "ViewController.h"
-#import "BaseTextView.h"
+#import "UIBezierPathVC.h"
 
-@interface ViewController ()
+typedef enum{
+    UIBezierPathStatus = 0
+}cellStatus;
+
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,strong) UITableView *mainTableView;
+@property (nonatomic,strong) NSMutableArray *dataArray;
 
 @end
 
@@ -18,13 +25,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    BaseTextView *textView = [[BaseTextView alloc] init];
-    textView.frame = (CGRect){10,100,300,300};
-    textView.placeholder = @"默认文字";
-    [self.view addSubview:textView];
+    self.title = @"Main Lists";
+    [self dataPapre];
+    [self viewsPapre];
+
     
-    NSLog(@"%ud",textView.text.length);
 }
+
+- (void)dataPapre{
+    NSMutableArray *array = [NSMutableArray array];
+    _dataArray = array;
+    [array addObject:@"UIBezierPath 曲线"];
+}
+
+- (void)viewsPapre{
+    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,self.view.frame.size.height}];
+    _mainTableView = tableView;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.rowHeight = 40.0f;
+    [self.view addSubview:_mainTableView];
+}
+
+#pragma tableView datasource 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString * const cellTag = @"cellTag";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellTag];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTag];
+    }
+    
+    cell.textLabel.text = _dataArray[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == UIBezierPathStatus) {
+        UIBezierPathVC *vc = [[UIBezierPathVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

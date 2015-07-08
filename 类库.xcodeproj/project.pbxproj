@@ -46,6 +46,7 @@
 		8141F33A1B466FC100F4E472 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8141F3391B466FC100F4E472 /* libsqlite3.0.dylib */; };
 		8141F3471B468DAB00F4E472 /* BaseTF.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141F3421B468DAB00F4E472 /* BaseTF.m */; };
 		8141F3481B468DAB00F4E472 /* BaseTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141F3451B468DAB00F4E472 /* BaseTextView.m */; };
+		81E7A5241B4CFAC2004D9811 /* UIBezierPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E7A5231B4CFAC2004D9811 /* UIBezierPathVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,8 @@
 		8141F3421B468DAB00F4E472 /* BaseTF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTF.m; sourceTree = "<group>"; };
 		8141F3441B468DAB00F4E472 /* BaseTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextView.h; sourceTree = "<group>"; };
 		8141F3451B468DAB00F4E472 /* BaseTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextView.m; sourceTree = "<group>"; };
+		81E7A5221B4CFAC2004D9811 /* UIBezierPathVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBezierPathVC.h; sourceTree = "<group>"; };
+		81E7A5231B4CFAC2004D9811 /* UIBezierPathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBezierPathVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 				8141F2901B466B1B00F4E472 /* AppDelegate.m */,
 				8141F2921B466B1B00F4E472 /* ViewController.h */,
 				8141F2931B466B1B00F4E472 /* ViewController.m */,
+				81E7A5221B4CFAC2004D9811 /* UIBezierPathVC.h */,
+				81E7A5231B4CFAC2004D9811 /* UIBezierPathVC.m */,
 				8141F2951B466B1B00F4E472 /* Main.storyboard */,
 				8141F2981B466B1B00F4E472 /* Images.xcassets */,
 				8141F29A1B466B1B00F4E472 /* LaunchScreen.xib */,
@@ -597,6 +602,7 @@
 				8141F3281B466B9A00F4E472 /* UIWindow+Launch.m in Sources */,
 				8141F3191B466B9A00F4E472 /* NSArray+Extend.m in Sources */,
 				8141F3371B466B9A00F4E472 /* CoreStatus.m in Sources */,
+				81E7A5241B4CFAC2004D9811 /* UIBezierPathVC.m in Sources */,
 				8141F3251B466B9A00F4E472 /* UIImage+Water.m in Sources */,
 				8141F3271B466B9A00F4E472 /* UIView+Extend.m in Sources */,
 				8141F3311B466B9A00F4E472 /* NSString+CoreHttp.m in Sources */,
@@ -798,6 +804,7 @@
 				8141F2AD1B466B1B00F4E472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8141F2AE1B466B1B00F4E472 /* Build configuration list for PBXNativeTarget "类库Tests" */ = {
 			isa = XCConfigurationList;
@@ -806,6 +813,7 @@
 				8141F2B01B466B1B00F4E472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
