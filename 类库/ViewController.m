@@ -8,15 +8,26 @@
 
 #import "ViewController.h"
 #import "UIBezierPathVC.h"
+#import "DragVC.h"
+#import "CorePullScaleVC.h"
+#import "CoreGraphicsVC.h"
+#import "AddressListVC.h"
+#import "Modle.h"
 
 typedef enum{
-    UIBezierPathStatus = 0
+    UIBezierPathStatus = 0,
+    DragStatus,
+    CorePullScaleStatus,
+    CoreGraphicsStatus,
+    AddressListStatus
 }cellStatus;
+
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) UITableView *mainTableView;
+@property (nonatomic,strong) UITableView    *mainTableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,strong) Modle          *md;
 
 @end
 
@@ -29,14 +40,27 @@ typedef enum{
     [self dataPapre];
     [self viewsPapre];
 
-    
+
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"%@",_md.name);
 }
 
 - (void)dataPapre{
     NSMutableArray *array = [NSMutableArray array];
     _dataArray = array;
     [array addObject:@"UIBezierPath 曲线"];
+    [array addObject:@"Drag-Views"];
+    [array addObject:@"CorePullScale"];
+    [array addObject:@"CoreGraphics"];
+    [array addObject:@"手机通讯录"];
+
 }
+
 
 - (void)viewsPapre{
     UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,self.view.frame.size.height}];
@@ -47,7 +71,8 @@ typedef enum{
     [self.view addSubview:_mainTableView];
 }
 
-#pragma tableView datasource 
+
+#pragma tableView datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataArray.count;
 }
@@ -63,14 +88,44 @@ typedef enum{
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == UIBezierPathStatus) {
+    if (indexPath.row == UIBezierPathStatus)
+    {
+        _md = [[Modle alloc] init];
+        _md.name = @"ly";
         UIBezierPathVC *vc = [[UIBezierPathVC alloc] init];
+        
+        Modle *md = [[Modle alloc] init];
+        md.name = _md.name;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if (indexPath.row == DragStatus) {
+        DragVC *vc = [[DragVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if (indexPath.row == CorePullScaleStatus) {
+        CorePullScaleVC *vc = [[CorePullScaleVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         
     }
+    
+    if (indexPath.row == CoreGraphicsStatus) {
+        CoreGraphicsVC *vc = [[CoreGraphicsVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    
+    if (indexPath.row == AddressListStatus) {
+        AddressListVC *vc = [[AddressListVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
+
+//
 
 
 - (void)didReceiveMemoryWarning {

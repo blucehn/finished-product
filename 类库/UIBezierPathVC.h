@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Modle.h"
 
 @interface UIBezierPathVC : UIViewController
+
+@property (nonatomic,strong) Modle *md;
 
 @end
