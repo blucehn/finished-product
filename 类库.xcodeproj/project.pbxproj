@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6555365FA35F144EB8AC5967 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5702DC48593836576C3AE29 /* libPods.a */; };
+		7727C8381B84309200F16D2B /* Pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7727C8371B84309200F16D2B /* Pinyin.m */; };
+		7727C83B1B84324000F16D2B /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7727C83A1B84324000F16D2B /* ChineseString.m */; };
 		773D2BAC1B71FCC100C482B6 /* Modle.m in Sources */ = {isa = PBXBuildFile; fileRef = 773D2BAB1B71FCC100C482B6 /* Modle.m */; };
 		7767BD9F1B5602EF00C64913 /* TLDragButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7767BD9E1B5602EF00C64913 /* TLDragButton.m */; };
 		7767BDA21B56032200C64913 /* DragVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7767BDA11B56032200C64913 /* DragVC.m */; };
@@ -75,6 +77,10 @@
 
 /* Begin PBXFileReference section */
 		5CD3C2778C84ABAAD731BE31 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7727C8361B84309200F16D2B /* Pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pinyin.h; sourceTree = "<group>"; };
+		7727C8371B84309200F16D2B /* Pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pinyin.m; sourceTree = "<group>"; };
+		7727C8391B84324000F16D2B /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		7727C83A1B84324000F16D2B /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
 		773D2BAA1B71FCC100C482B6 /* Modle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modle.h; sourceTree = "<group>"; };
 		773D2BAB1B71FCC100C482B6 /* Modle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Modle.m; sourceTree = "<group>"; };
 		7767BD9D1B5602EF00C64913 /* TLDragButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDragButton.h; sourceTree = "<group>"; };
@@ -244,6 +250,10 @@
 				776D1E9D1B830FDD003B801C /* Model.m */,
 				776D1E951B830D2E003B801C /* AddressListVC.h */,
 				776D1E961B830D2E003B801C /* AddressListVC.m */,
+				7727C8361B84309200F16D2B /* Pinyin.h */,
+				7727C8371B84309200F16D2B /* Pinyin.m */,
+				7727C8391B84324000F16D2B /* ChineseString.h */,
+				7727C83A1B84324000F16D2B /* ChineseString.m */,
 			);
 			path = "通讯录";
 			sourceTree = "<group>";
@@ -745,6 +755,7 @@
 				8141F3211B466B9A00F4E472 /* UIImage+Color.m in Sources */,
 				8141F31A1B466B9A00F4E472 /* NSDate+Extend.m in Sources */,
 				77AC05711B5CE671003C90B7 /* CoreGraphicsVC.m in Sources */,
+				7727C83B1B84324000F16D2B /* ChineseString.m in Sources */,
 				8141F3381B466B9A00F4E472 /* Reachability.m in Sources */,
 				8141F2941B466B1B00F4E472 /* ViewController.m in Sources */,
 				8141F2911B466B1B00F4E472 /* AppDelegate.m in Sources */,
@@ -765,6 +776,7 @@
 				81E7A5241B4CFAC2004D9811 /* UIBezierPathVC.m in Sources */,
 				8141F3251B466B9A00F4E472 /* UIImage+Water.m in Sources */,
 				7767BDA81B56092900C64913 /* CorePullScaleImageView.m in Sources */,
+				7727C8381B84309200F16D2B /* Pinyin.m in Sources */,
 				8141F3271B466B9A00F4E472 /* UIView+Extend.m in Sources */,
 				8141F3311B466B9A00F4E472 /* NSString+CoreHttp.m in Sources */,
 				8141F3161B466B9A00F4E472 /* CoreArchive.m in Sources */,

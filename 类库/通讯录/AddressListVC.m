@@ -9,11 +9,15 @@
 #import "AddressListVC.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import "ChineseString.h"
+#import "kInterface.h"
 #import "Model.h"
+#import "Pinyin.h"
 
 @interface AddressListVC()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong) NSMutableArray *dataSource;
+@property (nonatomic,strong) NSMutableDictionary *personDic;
+@property (nonatomic,strong) NSArray *indexArr;
 @property (nonatomic,strong) UITableView *ALTableView;
 
 @end
@@ -27,10 +31,17 @@
     [super viewDidLoad];
     self.title = @"手机通讯录";
     self.view.backgroundColor  = [UIColor whiteColor];
-    
     [self pareAlTableView];
     
-    [self address];
+    
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _personDic = [self groupSort:[self address]];
+    [_ALTableView reloadData];
 }
 
 
@@ -42,7 +53,7 @@
     _ALTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.rowHeight = 40.0f;
+    tableView.rowHeight = 50.0f;
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:_ALTableView];
 }
@@ -50,11 +61,27 @@
 
 #pragma mark
 #pragma mark -- delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return [_indexArr count];
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [_indexArr objectAtIndex:section];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"----%s",__func__);
-    return _dataSource.count;
+    return [[_personDic objectForKey:[_indexArr objectAtIndex:section]] count];
 }
+
+#pragma mark - 索引
+//返回索引数组
+-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return _indexArr;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -64,7 +91,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:alTag];
     }
     
-    Model *mol = _dataSource[indexPath.row];
+    Model *mol = (Model *)[[_personDic objectForKey:[_indexArr objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     cell.textLabel.text = mol.name;
     cell.detailTextLabel.text = mol.tel;
     
@@ -74,10 +101,100 @@
 }
 
 
-#pragma mark - 获取通讯录里联系人姓名和手机号
-- (void)address
+#pragma mark
+#pragma mark - 排序
+- (NSMutableDictionary *)groupSort:(NSMutableArray *)sourceArr
 {
-    _dataSource = [[NSMutableArray alloc] init];
+    NSMutableArray *chineseStringsArray = [[NSMutableArray alloc] initWithCapacity:sourceArr.count];
+
+    [sourceArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        ChineseString *chineseString = [[ChineseString alloc] init];
+        Model *personM = (Model *)sourceArr[idx];
+        Pinyin *pinyin = [[Pinyin alloc] init];
+
+        chineseString.string = IFISSTR(personM.name);
+        chineseString.tel = IFISSTR(personM.tel);
+        
+        if (![chineseString.string isEqualToString:@""]) //判断名字是否为空
+        {
+            NSString *pinYinResult=[NSString string];  //存每个名字中每个字的开头大写字母
+            chineseString.xing=[[NSString stringWithFormat:@"%c",[pinyin pinyinFirstLetter:[chineseString.string characterAtIndex:0]]] uppercaseString];//每个名字的姓
+            for(int j=0;j<chineseString.string.length;j++)//遍历名字中的每个字
+            {
+                NSString *singlePinyinLetter=[[NSString stringWithFormat:@"%c",[pinyin pinyinFirstLetter:[chineseString.string characterAtIndex:j]]] uppercaseString];//取出字中的开头字母并转为大写字母
+                
+                pinYinResult=[pinYinResult stringByAppendingString:singlePinyinLetter];//取出名字的所有字的开头字母
+            }
+            
+            chineseString.pinYin=pinYinResult;//将名字中所有字的开头大写字母chinesestring对象的pinYin中
+
+        }
+        else
+        {
+            //名字为空的时侯
+            chineseString.pinYin=@"";
+        }
+        
+        [chineseStringsArray addObject:chineseString];//将包含名字的大写字母和名字的chinesestring对象存在数组中
+
+    }];
+    
+    //按照拼音首字母对这些Strings进行排序
+    NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"pinYin" ascending:YES]];//对pinyin 进行排序  就像sql中的order by后指定的根据谁排序   生成一个数组
+    [chineseStringsArray sortUsingDescriptors:sortDescriptors];
+    
+    
+#pragma mark
+#pragma mark - 分组
+    NSMutableSet *sexSet = [[NSMutableSet alloc] init]; //存储所有同学的姓（去重）
+    NSMutableArray *sexArray = [NSMutableArray arrayWithCapacity:0];//将不重复的姓从集合转为数组（便于操作）
+
+    for(int i = 0 ; i < [chineseStringsArray count] ; i++)
+    {
+        [sexSet addObject:((ChineseString *)[chineseStringsArray objectAtIndex:i]).xing];
+
+    }
+    sexArray = (NSMutableArray *)[sexSet allObjects];
+    
+    _indexArr = [sexArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];//将不重复的姓按照字符表进行排序
+    
+    NSMutableArray *modelArray = [NSMutableArray arrayWithCapacity:0];
+    
+    NSMutableDictionary *personDic = [[NSMutableDictionary alloc]init]; //人物字典
+
+    for (int i=0; i<[_indexArr count]; i++)//遍历所有不重复的姓
+    {
+        for (int j=0; j<[chineseStringsArray count]; j++)//遍历所有人物
+        {
+            ChineseString *chineseM = chineseStringsArray[j];
+            if ([chineseM.xing isEqualToString:[_indexArr objectAtIndex:i]]) //将每个学生的姓跟每个姓比较
+            {
+                Model *model = [[Model alloc] init];
+                model.name = chineseM.string;
+                model.tel = chineseM.tel;
+                [modelArray addObject:model];
+            }
+        }
+        [personDic setObject:modelArray forKey:[_indexArr objectAtIndex:i]];
+        modelArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    
+    
+
+//    NSLog(@"presonDic == %@",personDic);
+   
+
+    return personDic;
+}
+
+
+#pragma mark - 获取通讯录里联系人姓名和手机号
+- (NSMutableArray *)address
+{
+   NSMutableArray *addressArr = [[NSMutableArray alloc] init];
     //新建一个通讯录类
     ABAddressBookRef addressBooks = nil;
     
@@ -145,7 +262,7 @@
                 switch (j) {
                     case 0: {// Phone number
                         addressBook.tel = (__bridge NSString*)value;
-                        NSLog(@"%@",addressBook.tel);
+//                        NSLog(@"%@",addressBook.tel);
                         break;
                     }
                         //                    case 1: {// Email
@@ -158,12 +275,15 @@
             CFRelease(valuesRef);
         }
         //将个人信息添加到数组中，循环完成后addressBookTemp中包含所有联系人的信息
-        [_dataSource addObject:addressBook];
-        
+        [addressArr addObject:addressBook];
         if (abName) CFRelease(abName);
         if (abLastName) CFRelease(abLastName);
         if (abFullName) CFRelease(abFullName);
+        
     }
+
+    return addressArr;
+
 }
 
 
