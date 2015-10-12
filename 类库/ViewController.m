@@ -37,7 +37,7 @@ typedef enum{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.title = @"Main Lists";
+    self.title = @"类库";
     [self dataPapre];
     [self viewsPapre];
 
@@ -57,14 +57,15 @@ typedef enum{
     [array addObject:@"UIBezierPath 曲线"];
     [array addObject:@"Drag-Views"];
     [array addObject:@"CorePullScale"];
-    [array addObject:@"CoreGraphics"];
+    [array addObject:@"CoreGraphics（Toast）"];
     [array addObject:@"手机通讯录"];
 
 }
 
 
+
 - (void)viewsPapre{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,self.view.frame.size.height}];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0,64,self.view.frame.size.width,self.view.frame.size.height-64}];
     _mainTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -123,10 +124,25 @@ typedef enum{
         AddressListVC *vc = [[AddressListVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
+   
 }
 
 
-//
+//强制竖屏
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
 
 
 - (void)didReceiveMemoryWarning {

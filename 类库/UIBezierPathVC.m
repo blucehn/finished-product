@@ -25,7 +25,9 @@
 
 
 @interface UIBezierPathVC ()
-
+{
+    UIBezierPath *bezierPath;
+}
 @end
 
 @implementation UIBezierPathVC
@@ -98,7 +100,8 @@
 }
 
 
-//
+
+
 
 /*
 #pragma mark - Navigation

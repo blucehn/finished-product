@@ -21,6 +21,11 @@
 		776D1E991B830F90003B801C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776D1E981B830F90003B801C /* AddressBook.framework */; };
 		776D1E9B1B830F97003B801C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776D1E9A1B830F97003B801C /* AddressBookUI.framework */; };
 		776D1E9E1B830FDD003B801C /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D1E9D1B830FDD003B801C /* Model.m */; };
+		7787BFBF1B8C349700542A49 /* DSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 7787BFBE1B8C349700542A49 /* DSToast.m */; };
+		7787BFC31B8C3F1900542A49 /* DJPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7787BFC21B8C3F1900542A49 /* DJPageView.m */; };
+		778AE1491BB4F73C00AFB567 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AE1481BB4F73C00AFB567 /* CustomNavController.m */; };
+		778AE14B1BB4F95900AFB567 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 778AE14A1BB4F95900AFB567 /* Default-568h@2x.png */; };
+		77AB1E641B870B8700C945C4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AB1E631B870B8700C945C4 /* MessageUI.framework */; };
 		77AC05711B5CE671003C90B7 /* CoreGraphicsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AC05701B5CE671003C90B7 /* CoreGraphicsVC.m */; };
 		77AC05731B5CEA2C003C90B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AC05721B5CEA2C003C90B7 /* CoreGraphics.framework */; };
 		8141F28E1B466B1B00F4E472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141F28D1B466B1B00F4E472 /* main.m */; };
@@ -101,6 +106,14 @@
 		776D1E9C1B830FDD003B801C /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		776D1E9D1B830FDD003B801C /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		776ED8711B841D2F00E7B827 /* kInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kInterface.h; sourceTree = "<group>"; };
+		7787BFBD1B8C349700542A49 /* DSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSToast.h; sourceTree = "<group>"; };
+		7787BFBE1B8C349700542A49 /* DSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSToast.m; sourceTree = "<group>"; };
+		7787BFC11B8C3F1900542A49 /* DJPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJPageView.h; sourceTree = "<group>"; };
+		7787BFC21B8C3F1900542A49 /* DJPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJPageView.m; sourceTree = "<group>"; };
+		778AE1471BB4F73C00AFB567 /* CustomNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavController.h; sourceTree = "<group>"; };
+		778AE1481BB4F73C00AFB567 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
+		778AE14A1BB4F95900AFB567 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		77AB1E631B870B8700C945C4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		77AC056F1B5CE671003C90B7 /* CoreGraphicsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsVC.h; sourceTree = "<group>"; };
 		77AC05701B5CE671003C90B7 /* CoreGraphicsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreGraphicsVC.m; sourceTree = "<group>"; };
 		77AC05721B5CEA2C003C90B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -191,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77AB1E641B870B8700C945C4 /* MessageUI.framework in Frameworks */,
 				776D1E9B1B830F97003B801C /* AddressBookUI.framework in Frameworks */,
 				776D1E991B830F90003B801C /* AddressBook.framework in Frameworks */,
 				77AC05731B5CEA2C003C90B7 /* CoreGraphics.framework in Frameworks */,
@@ -258,9 +272,28 @@
 			path = "通讯录";
 			sourceTree = "<group>";
 		};
+		7787BFC01B8C3F1900542A49 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				7787BFC11B8C3F1900542A49 /* DJPageView.h */,
+				7787BFC21B8C3F1900542A49 /* DJPageView.m */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		778AE1461BB4F65000AFB567 /* 横竖屏 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "横竖屏";
+			sourceTree = "<group>";
+		};
 		77AC056E1B5CE640003C90B7 /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
+				7787BFC01B8C3F1900542A49 /* Lib */,
+				7787BFBD1B8C349700542A49 /* DSToast.h */,
+				7787BFBE1B8C349700542A49 /* DSToast.m */,
 				77AC056F1B5CE671003C90B7 /* CoreGraphicsVC.h */,
 				77AC05701B5CE671003C90B7 /* CoreGraphicsVC.m */,
 			);
@@ -270,6 +303,7 @@
 		8141F27F1B466B1B00F4E472 = {
 			isa = PBXGroup;
 			children = (
+				778AE14A1BB4F95900AFB567 /* Default-568h@2x.png */,
 				77AC05721B5CEA2C003C90B7 /* CoreGraphics.framework */,
 				8141F3391B466FC100F4E472 /* libsqlite3.0.dylib */,
 				8141F28A1B466B1B00F4E472 /* 类库 */,
@@ -297,11 +331,14 @@
 				8141F2901B466B1B00F4E472 /* AppDelegate.m */,
 				8141F2921B466B1B00F4E472 /* ViewController.h */,
 				8141F2931B466B1B00F4E472 /* ViewController.m */,
+				778AE1471BB4F73C00AFB567 /* CustomNavController.h */,
+				778AE1481BB4F73C00AFB567 /* CustomNavController.m */,
 				81E7A5221B4CFAC2004D9811 /* UIBezierPathVC.h */,
 				81E7A5231B4CFAC2004D9811 /* UIBezierPathVC.m */,
 				773D2BAA1B71FCC100C482B6 /* Modle.h */,
 				773D2BAB1B71FCC100C482B6 /* Modle.m */,
 				776ED8711B841D2F00E7B827 /* kInterface.h */,
+				778AE1461BB4F65000AFB567 /* 横竖屏 */,
 				776D1E941B830CD5003B801C /* 通讯录 */,
 				7767BD9C1B5602EF00C64913 /* View拖拽 */,
 				7767BDA31B56092900C64913 /* CorePullScale */,
@@ -596,6 +633,7 @@
 		AD7634FAA99593D6B4AE9FF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77AB1E631B870B8700C945C4 /* MessageUI.framework */,
 				776D1E9A1B830F97003B801C /* AddressBookUI.framework */,
 				776D1E981B830F90003B801C /* AddressBook.framework */,
 				B5702DC48593836576C3AE29 /* libPods.a */,
@@ -688,6 +726,7 @@
 				8141F2971B466B1B00F4E472 /* Main.storyboard in Resources */,
 				7767BDAE1B560BF500C64913 /* nuo_big.png in Resources */,
 				8141F29C1B466B1B00F4E472 /* LaunchScreen.xib in Resources */,
+				778AE14B1BB4F95900AFB567 /* Default-568h@2x.png in Resources */,
 				8141F2991B466B1B00F4E472 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -763,14 +802,17 @@
 				8141F3471B468DAB00F4E472 /* BaseTF.m in Sources */,
 				8141F3231B466B9A00F4E472 /* UIImage+Extend.m in Sources */,
 				8141F3301B466B9A00F4E472 /* CoreHttp.m in Sources */,
+				7787BFBF1B8C349700542A49 /* DSToast.m in Sources */,
 				7767BDA21B56032200C64913 /* DragVC.m in Sources */,
 				8141F3341B466B9A00F4E472 /* NSString+File.m in Sources */,
 				8141F31B1B466B9A00F4E472 /* NSObject+Extend.m in Sources */,
 				8141F3241B466B9A00F4E472 /* UIImage+FixOrientation.m in Sources */,
+				7787BFC31B8C3F1900542A49 /* DJPageView.m in Sources */,
 				8141F3151B466B9A00F4E472 /* NSString+ArcFile.m in Sources */,
 				8141F28E1B466B1B00F4E472 /* main.m in Sources */,
 				8141F3481B468DAB00F4E472 /* BaseTextView.m in Sources */,
 				8141F3281B466B9A00F4E472 /* UIWindow+Launch.m in Sources */,
+				778AE1491BB4F73C00AFB567 /* CustomNavController.m in Sources */,
 				8141F3191B466B9A00F4E472 /* NSArray+Extend.m in Sources */,
 				8141F3371B466B9A00F4E472 /* CoreStatus.m in Sources */,
 				81E7A5241B4CFAC2004D9811 /* UIBezierPathVC.m in Sources */,
@@ -910,11 +952,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CD3C2778C84ABAAD731BE31 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: yinghai wang (C2J9ABCE5U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yinghai wang (C2J9ABCE5U)";
 				INFOPLIST_FILE = "类库/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5be8b1e2-d558-49a2-be46-7dab09ae9e8b";
 			};
 			name = Debug;
 		};
@@ -922,11 +966,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D004A4CA4226DD993BEBB56C /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: yinghai wang (C2J9ABCE5U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yinghai wang (C2J9ABCE5U)";
 				INFOPLIST_FILE = "类库/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5be8b1e2-d558-49a2-be46-7dab09ae9e8b";
 			};
 			name = Release;
 		};

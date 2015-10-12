@@ -9,6 +9,9 @@
 #import "CoreGraphicsVC.h"
 #import <CoreGraphics/CoreGraphics.h>
 
+#import "DSToast.h"
+
+
 @interface CoreGraphicsVC ()
 
 @property (nonatomic,strong) UIImageView *firstV;
@@ -32,18 +35,20 @@
     imgView.userInteractionEnabled = YES;
     [self.view addSubview:imgView];
     
-    
-    UILabel *lab = [[UILabel alloc] initWithFrame:(CGRect){{0,0},_firstV.frame.size}];
-    lab.backgroundColor = [UIColor clearColor];
-    lab.numberOfLines = 0;
-    lab.text = @"jsf sjdfklsjdfkjsdlkfj";
-    lab.textColor = [UIColor redColor];
-    [imgView addSubview:lab];
+
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longClick:)];
     [_firstV addGestureRecognizer:longPress];
     
 
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
 
@@ -77,7 +82,8 @@
     
     if(longPress.state == UIGestureRecognizerStateEnded) //长按介绍
     {
-    
+        DSToast *toast = [[DSToast alloc] initWithText:@"仿照安卓的提示框"];
+        [toast showInView:self.view showType:DSToastShowTypeCenter];
     }
 }
 
