@@ -65,7 +65,7 @@ typedef enum{
 
 
 - (void)viewsPapre{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0,64,self.view.frame.size.width,self.view.frame.size.height-64}];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,self.view.frame.size.width,self.view.frame.size.height}];
     _mainTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;

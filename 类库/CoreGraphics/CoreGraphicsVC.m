@@ -59,19 +59,32 @@
     //目的绘制一个新的UIImageView 并且有放大悬浮的效果
     if (longPress.state == UIGestureRecognizerStateBegan) //长按开始
     {
-        UIGraphicsBeginImageContextWithOptions(_firstV.frame.size, NO, 0.0f);
-        //渲染自身
-        [_firstV.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImageView *newImageView = [[UIImageView alloc] initWithImage:UIGraphicsGetImageFromCurrentImageContext()];
-        UIGraphicsEndImageContext();
-        newImageView.center = _firstV.center;
+//        UIGraphicsBeginImageContextWithOptions(_firstV.frame.size, NO, 0.0f);
+//        //渲染自身
+//        [_firstV.layer renderInContext:UIGraphicsGetCurrentContext()];
+//        UIImageView *newImageView = [[UIImageView alloc] initWithImage:UIGraphicsGetImageFromCurrentImageContext()];
+//        UIGraphicsEndImageContext();
+//        newImageView.center = _firstV.center;
+//        
+//        
+//        [self.view addSubview:newImageView];
+//        
+//        [UIView animateWithDuration:1 animations:^{
+//            newImageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+//        }];
         
         
-        [self.view addSubview:newImageView];
         
-        [UIView animateWithDuration:1 animations:^{
-            newImageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
-        }];
+        //第一次移动10个像素，以后都是以最初位置的中心点为起始参照，所以后续bt1无论点击多少次，按钮都在初始位置偏移10个像素的位置不动
+//        _firstV.transform = CGAffineTransformMakeTranslation(10, 0);
+        
+        
+        
+        
+        _firstV.transform = CGAffineTransformTranslate(_firstV.transform, 0, _firstV.frame.size.height);
+//        _firstV.transform = CGAffineTransformScale(_firstV.transform, 1, -1);
+        _firstV.transform = CGAffineTransformRotate(_firstV.transform, M_PI);
+        
         
     }
     
