@@ -129,9 +129,7 @@
         controller.body = @"测试发短信";
         controller.messageComposeDelegate = self;
         
-        [self presentViewController:controller animated:YES completion:^{
-            
-        }];
+        [self presentModalViewController:controller animated:YES];
         
         [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"测试短信"];//修改短信界面标题
     }else{
@@ -145,9 +143,7 @@
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
     
-    [controller dismissViewControllerAnimated:NO completion:^{
-        
-    }];//关键的一句   不能为YES
+    [controller dismissModalViewControllerAnimated:NO];//关键的一句   不能为YES
     
     switch ( result ) {
             
