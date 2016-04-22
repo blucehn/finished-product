@@ -13,13 +13,17 @@
 #import "CoreGraphicsVC.h"
 #import "AddressListVC.h"
 #import "Modle.h"
+#import "CycleScrollViewController.h"
+#import "PaoMaViewController.h"
 
 typedef enum{
     UIBezierPathStatus = 0,
     DragStatus,
     CorePullScaleStatus,
     CoreGraphicsStatus,
-    AddressListStatus
+    AddressListStatus,
+    CarouselStatus,
+    PaoMaDengStatus
 }cellStatus;
 
 
@@ -59,6 +63,8 @@ typedef enum{
     [array addObject:@"CorePullScale"];
     [array addObject:@"CoreGraphics（Toast）"];
     [array addObject:@"手机通讯录"];
+    [array addObject:@"轮播"];
+    [array addObject:@"跑马灯"];
 
 }
 
@@ -125,12 +131,24 @@ typedef enum{
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+    if (indexPath.row == CarouselStatus)
+    {
+        CycleScrollViewController *vc = [[CycleScrollViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if (indexPath.row == PaoMaDengStatus)
+    {
+        PaoMaViewController *vc = [[PaoMaViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
    
 }
 
 
 //强制竖屏
--(NSUInteger)supportedInterfaceOrientations{
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
 }
 
